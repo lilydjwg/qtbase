@@ -240,7 +240,7 @@ void QWaylandTextInputv3::zwp_text_input_v3_done(uint32_t serial)
             // only use single underline style for now
             QTextCharFormat format;
             format.setFontUnderline(true);
-            format.setUnderlineStyle(QTextCharFormat::SingleUnderline);
+            format.setUnderlineStyle(QTextCharFormat::DashUnderline);
             QInputMethodEvent::Attribute attribute2(QInputMethodEvent::TextFormat,
                                                     0,
                                                     m_pendingPreeditString.text.length(), format);
@@ -254,7 +254,7 @@ void QWaylandTextInputv3::zwp_text_input_v3_done(uint32_t serial)
                 // styles taken from https://github.com/ibus/ibus/wiki/Wayland-Colors
                 switch (prededitStyle.hint) {
                 case preedit_hint_whole:
-                    format.setUnderlineStyle(QTextCharFormat::SingleUnderline);
+                    format.setUnderlineStyle(QTextCharFormat::DashUnderline);
                     break;
                 case preedit_hint_selection:
                     format.setForeground(QPalette().highlightedText());
